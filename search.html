@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>错题查找 - 高中班级错题共享库</title>
+    <title>错题查找 - 班级错题共享库</title>
     <style>
-        /* 全局样式 */
+        /* 全局基础样式 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Microsoft YaHei", Arial, sans-serif;
+            font-family: "Microsoft YaHei", sans-serif;
         }
         body {
             background-color: #f5f7fa;
             color: #333;
-            line-height: 1.6;
             padding: 20px;
         }
         .container {
@@ -23,155 +22,228 @@
             margin: 0 auto;
         }
 
-        /* 标题样式 */
-        .page-title {
-            text-align: center;
-            color: #2c3e50;
-            margin-bottom: 30px;
-            font-size: 28px;
-            position: relative;
-        }
-        .page-title::after {
-            content: "";
-            display: block;
-            width: 80px;
-            height: 3px;
-            background-color: #3498db;
-            margin: 10px auto;
-            border-radius: 2px;
-        }
-
-        /* 导航栏（跳转上传页） */
-        .nav-bar {
-            text-align: center;
+        /* 导航：仅保留返回首页入口 */
+        .nav {
             margin-bottom: 20px;
         }
         .nav-link {
             color: #3498db;
             text-decoration: none;
             font-size: 16px;
-            font-weight: 500;
         }
         .nav-link:hover {
             text-decoration: underline;
         }
 
+        /* 标题：简洁明了 */
+        .title {
+            font-size: 26px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
         /* 卡片通用样式 */
         .card {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            padding: 25px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+            padding: 20px;
             margin-bottom: 25px;
-            transition: box-shadow 0.3s ease;
-        }
-        .card:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
         }
         .card-title {
             font-size: 18px;
+            margin-bottom: 15px;
             color: #2c3e50;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-        .card-title i {
-            color: #3498db;
-            margin-right: 8px;
-            font-size: 20px;
         }
 
-        /* 筛选区样式 */
-        .filter-bar {
+        /* 筛选区：简单布局 */
+        .filter {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
-            align-items: flex-end;
+            gap: 15px;
+            align-items: center;
         }
-        .filter-group {
+        .filter-item {
             flex: 1;
-            min-width: 200px;
+            min-width: 180px;
         }
-        .search-box {
+        .search-item {
             flex: 2;
-            min-width: 280px;
+            min-width: 250px;
         }
-        .filter-group label, .search-box label {
+        .filter label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: #444;
-            font-size: 16px;
+            margin-bottom: 6px;
+            font-size: 15px;
         }
-        .form-control {
+        .input {
             width: 100%;
-            padding: 12px 15px;
+            padding: 10px;
             border: 1px solid #ddd;
             border-radius: 6px;
             font-size: 16px;
-            transition: border-color 0.3s ease;
         }
-        .form-control:focus {
+        .input:focus {
             outline: none;
             border-color: #3498db;
-            box-shadow: 0 0 0 2px rgba(52,152,219,0.2);
         }
-
-        /* 按钮样式 */
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: #3498db;
+        .search-btn {
+            width: 100%;
+            padding: 10px;
+            background: #3498db;
             color: white;
             border: none;
             border-radius: 6px;
             font-size: 16px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
         }
-        .btn:hover {
-            background-color: #2980b9;
-        }
-        .search-btn {
-            width: 100%;
+        .search-btn:hover {
+            background: #2980b9;
         }
 
-        /* 错题展示区样式 */
+        /* 错题展示区：简洁卡片 */
         .question-list {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
         }
         .question-card {
             border: 1px solid #eee;
-            border-radius: 8px;
-            padding: 20px;
-            transition: all 0.3s ease;
-            background-color: white;
+            border-radius: 6px;
+            padding: 15px;
+            background: white;
         }
-        .question-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.06);
-        }
-        .question-subject {
+        .subject-tag {
             display: inline-block;
-            padding: 5px 12px;
-            background-color: #e3f2fd;
+            padding: 3px 10px;
+            background: #e3f2fd;
             color: #3498db;
             border-radius: 20px;
             font-size: 14px;
-            margin-bottom: 12px;
-            font-weight: 500;
+            margin-bottom: 10px;
         }
-        .question-content {
+        .question {
             font-size: 16px;
-            margin-bottom: 15px;
-            color: #333;
-            line-height: 1.8;
-            min-height: 60px;
+            margin-bottom: 10px;
+            line-height: 1.6;
         }
-        .question-answer {
-            background-color: #f8f9fa;
-            padding: 12px;
-            border
+        .answer {
+            font-size: 15px;
+            margin-bottom: 8px;
+            color: #666;
+        }
+        .answer span {
+            font-weight: bold;
+            color: #27ae60;
+        }
+        .meta {
+            font-size: 14px;
+            color: #999;
+            margin-top: 10px;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .question-list {
+                grid-template-columns: 1fr;
+            }
+            .filter {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 简单导航 -->
+        <div class="nav">
+            <a href="index.html" class="nav-link">← 返回首页</a>
+        </div>
+
+        <!-- 页面标题 -->
+        <h1 class="title">查找错题</h1>
+
+        <!-- 筛选卡片 -->
+        <div class="card">
+            <h2 class="card-title">筛选条件</h2>
+            <div class="filter">
+                <div class="filter-item">
+                    <label>学科</label>
+                    <select class="input" id="subject">
+                        <option value="">全部</option>
+                        <option value="math">数学</option>
+                        <option value="physics">物理</option>
+                        <option value="chemistry">化学</option>
+                        <option value="english">英语</option>
+                        <option value="chinese">语文</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label>题型</label>
+                    <select class="input" id="type">
+                        <option value="">全部</option>
+                        <option value="single">单选题</option>
+                        <option value="multiple">多选题</option>
+                        <option value="fill">填空题</option>
+                        <option value="essay">简答题</option>
+                    </select>
+                </div>
+                <div class="search-item">
+                    <label>搜索题干</label>
+                    <div style="display: flex; gap: 8px;">
+                        <input type="text" class="input" id="keyword" placeholder="输入关键词">
+                        <button class="search-btn" id="search">搜索</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 错题展示卡片 -->
+        <div class="card">
+            <h2 class="card-title">错题列表</h2>
+            <div class="question-list">
+                <!-- 示例错题1 -->
+                <div class="question-card">
+                    <span class="subject-tag">数学</span>
+                    <div class="question">已知函数f(x)=x²+2x，求f(3)的值。</div>
+                    <div class="answer"><span>正确答案：</span>15（解析：f(3)=3²+2×3=15）</div>
+                    <div class="answer"><span>错误答案：</span>9（漏算2×3）</div>
+                    <div class="meta">2024-05-10 | 提交人：小明</div>
+                </div>
+
+                <!-- 示例错题2 -->
+                <div class="question-card">
+                    <span class="subject-tag">物理</span>
+                    <div class="question">2kg物体在10N拉力下匀速运动，求摩擦力大小。</div>
+                    <div class="answer"><span>正确答案：</span>10N（二力平衡）</div>
+                    <div class="answer"><span>错误答案：</span>20N（误将质量当重力）</div>
+                    <div class="meta">2024-05-12 | 提交人：小红</div>
+                </div>
+
+                <!-- 示例错题3 -->
+                <div class="question-card">
+                    <span class="subject-tag">英语</span>
+                    <div class="question">— How long have you ______ here? (A. lived B. living)</div>
+                    <div class="answer"><span>正确答案：</span>A（现在完成时用过去分词）</div>
+                    <div class="answer"><span>错误答案：</span>B（误用现在分词）</div>
+                    <div class="meta">2024-05-15 | 提交人：小刚</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 基础交互（供后续补充JS） -->
+    <script>
+        // 搜索按钮点击事件
+        document.getElementById('search').addEventListener('click', () => {
+            const subject = document.getElementById('subject').value;
+            const type = document.getElementById('type').value;
+            const keyword = document.getElementById('keyword').value;
+            // 后续可补充：根据筛选条件渲染错题
+            console.log(`筛选条件：${subject || '全部学科'}，${type || '全部题型'}，关键词：${keyword}`);
+        });
+    </script>
+</body>
+</html>
