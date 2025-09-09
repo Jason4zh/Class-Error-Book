@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>班级错题共享库</title>
+    <style>
+        /* 全局极简样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* 标题 */
+        .page-title {
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 60px;
+            font-weight: 600;
+        }
+
+        /* 功能按钮区 */
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .main-btn {
+            padding: 16px 0;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .main-btn:hover {
+            background-color: #2980b9;
+        }
+        /* 区分按钮功能的浅色调 */
+        .search-btn {
+            background-color: #2ecc71;
+        }
+        .search-btn:hover {
+            background-color: #27ae60;
+        }
+    </style>
+    <!-- 极简图标（仅辅助识别功能） -->
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_4085935_0s80k749y7d.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 仅保留核心标题 -->
+        <h1 class="page-title">班级错题共享库</h1>
+
+        <!-- 核心功能入口（仅两个按钮） -->
+        <div class="btn-group">
+            <a href="upload.html" class="main-btn">
+                <<i class="iconfont icon-tijiao" style="margin-right: 8px;"></</i>上传错题
+            </a>
+            <a href="search.html" class="main-btn search-btn">
+                <<i class="iconfont icon-chazhao" style="margin-right: 8px;"></</i>查找错题
+            </a>
+        </div>
+    </div>
+</body>
+</html>
