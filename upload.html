@@ -5,25 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>错题上传 - 高中班级错题共享库</title>
     <style>
-        /* 全局样式 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Microsoft YaHei", Arial, sans-serif;
-        }
         body {
             background-color: #f5f7fa;
             color: #333;
             line-height: 1.6;
             padding: 20px;
+            font-family: "Microsoft YaHei", Arial, sans-serif;
         }
         .container {
             max-width: 800px;
             margin: 0 auto;
         }
-
-        /* 标题样式 */
         .page-title {
             text-align: center;
             color: #2c3e50;
@@ -40,8 +32,6 @@
             margin: 10px auto;
             border-radius: 2px;
         }
-
-        /* 导航栏（跳转查找页） */
         .nav-bar {
             text-align: center;
             margin-bottom: 20px;
@@ -55,33 +45,18 @@
         .nav-link:hover {
             text-decoration: underline;
         }
-
-        /* 卡片样式 */
         .card {
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             padding: 25px;
             margin-bottom: 25px;
-            transition: box-shadow 0.3s ease;
-        }
-        .card:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
         }
         .card-title {
             font-size: 18px;
             color: #2c3e50;
             margin-bottom: 20px;
-            display: flex;
-            align-items: center;
         }
-        .card-title i {
-            color: #3498db;
-            margin-right: 8px;
-            font-size: 20px;
-        }
-
-        /* 表单样式 */
         .form-group {
             margin-bottom: 20px;
         }
@@ -98,7 +73,6 @@
             border: 1px solid #ddd;
             border-radius: 6px;
             font-size: 16px;
-            transition: border-color 0.3s ease;
         }
         .form-control:focus {
             outline: none;
@@ -109,8 +83,6 @@
             min-height: 100px;
             resize: vertical;
         }
-
-        /* 上传区域 */
         .upload-area {
             border: 2px dashed #ddd;
             border-radius: 6px;
@@ -123,11 +95,6 @@
             border-color: #3498db;
             background-color: #f8fafc;
         }
-        .upload-icon {
-            font-size: 36px;
-            color: #999;
-            margin-bottom: 12px;
-        }
         .upload-text {
             color: #666;
             font-size: 15px;
@@ -135,8 +102,6 @@
         #questionImg {
             display: none;
         }
-
-        /* 按钮样式 */
         .btn {
             display: inline-block;
             padding: 12px 24px;
@@ -155,8 +120,6 @@
             width: 100%;
             margin-top: 10px;
         }
-
-        /* 响应式适配 */
         @media (max-width: 768px) {
             .page-title {
                 font-size: 24px;
@@ -169,37 +132,31 @@
             }
         }
     </style>
-    <!-- 图标库 -->
-    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_4085935_0s80k749y7d.css">
 </head>
 <body>
     <div class="container">
-        <!-- 导航：跳转查找页 -->
         <div class="nav-bar">
             <a href="search.html" class="nav-link">→ 去查找已上传的错题</a>
         </div>
-
-        <!-- 页面标题 -->
         <h1 class="page-title">提交新错题</h1>
-
-        <!-- 错题提交卡片 -->
         <div class="card">
-            <h2 class="card-title">
-                <<i class="iconfont icon-tijiao"></</i> 填写错题信息
-            </h2>
+            <h2 class="card-title">填写错题信息</h2>
             <form id="questionForm">
                 <div class="form-group">
                     <label for="subject">选择学科 <span style="color: #e74c3c;">*</span></label>
                     <select id="subject" class="form-control" required>
                         <option value="">-- 请选择学科 --</option>
+                        <option value="chinese">语文</option>
                         <option value="math">数学</option>
+                        <option value="english">英语</option>
                         <option value="physics">物理</option>
                         <option value="chemistry">化学</option>
-                        <option value="english">英语</option>
-                        <option value="chinese">语文</option>
+                        <option value="politics">政治</option>
+                        <option value="history">历史</option>
+                        <option value="biology">生物</option>
+                        <option value="geography">地理</option>
                     </select>
                 </div>
-
                 <div class="form-group">
                     <label for="questionType">选择题型 <span style="color: #e74c3c;">*</span></label>
                     <select id="questionType" class="form-control" required>
@@ -207,47 +164,36 @@
                         <option value="single">单选题</option>
                         <option value="multiple">多选题</option>
                         <option value="fill">填空题</option>
-                        <option value="essay">简答题/大题</option>
+                        <option value="essay">解答题</option>
                     </select>
                 </div>
-
                 <div class="form-group">
                     <label for="questionContent">错题题干 <span style="color: #e74c3c;">*</span></label>
-                    <textarea id="questionContent" class="form-control" placeholder="请完整输入错题题干（如：已知函数f(x)=x²+2x，求f(3)的值）" required></textarea>
+                    <textarea id="questionContent" class="form-control" placeholder="请完整输入错题题干" required></textarea>
                 </div>
-
                 <div class="form-group">
                     <label for="wrongAnswer">你的错误答案 <span style="color: #e74c3c;">*</span></label>
-                    <input type="text" id="wrongAnswer" class="form-control" placeholder="输入你当时做错的答案（如：9）" required>
+                    <input type="text" id="wrongAnswer" class="form-control" placeholder="输入你当时做错的答案" required>
                 </div>
-
                 <div class="form-group">
                     <label for="correctAnswer">正确答案 <span style="color: #e74c3c;">*</span></label>
-                    <textarea id="correctAnswer" class="form-control" placeholder="输入该题的正确答案及简要解析（如：15，解析：f(3)=3²+2×3=9+6=15）" required></textarea>
+                    <textarea id="correctAnswer" class="form-control" placeholder="输入该题的正确答案及简要解析" required></textarea>
                 </div>
-
                 <div class="form-group">
                     <label for="analysis">错误分析（可选）</label>
-                    <textarea id="analysis" class="form-control" placeholder="说明做错的原因，帮助同学避坑（如：忘记计算2×3的项，只算了平方）"></textarea>
+                    <textarea id="analysis" class="form-control" placeholder="说明做错的原因，帮助同学避坑"></textarea>
                 </div>
-
                 <div class="form-group">
                     <label>上传错题照片（可选）</label>
                     <div class="upload-area" id="uploadArea">
-                        <div class="upload-icon">
-                            <<i class="iconfont icon-upload"></</i>
-                        </div>
                         <div class="upload-text">点击或拖拽文件到此处上传（支持JPG/PNG格式）</div>
                         <input type="file" id="questionImg" accept="image/jpg,image/png">
                     </div>
                 </div>
-
                 <button type="button" class="btn submit-btn" id="submitBtn">确认提交错题</button>
             </form>
         </div>
     </div>
-
-    <!-- 上传区域基础交互（可补充JS） -->
     <script src="upload.js"></script>
 </body>
 </html>

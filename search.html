@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,11 +13,13 @@
             box-sizing: border-box;
             font-family: "Microsoft YaHei", sans-serif;
         }
+
         body {
             background-color: #f5f7fa;
             color: #333;
             padding: 20px;
         }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -26,11 +29,13 @@
         .nav {
             margin-bottom: 20px;
         }
+
         .nav-link {
             color: #3498db;
             text-decoration: none;
             font-size: 16px;
         }
+
         .nav-link:hover {
             text-decoration: underline;
         }
@@ -47,10 +52,11 @@
         .card {
             background: white;
             border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
             padding: 20px;
             margin-bottom: 25px;
         }
+
         .card-title {
             font-size: 18px;
             margin-bottom: 15px;
@@ -64,19 +70,23 @@
             gap: 15px;
             align-items: center;
         }
+
         .filter-item {
             flex: 1;
             min-width: 180px;
         }
+
         .search-item {
             flex: 2;
             min-width: 250px;
         }
+
         .filter label {
             display: block;
             margin-bottom: 6px;
             font-size: 15px;
         }
+
         .input {
             width: 100%;
             padding: 10px;
@@ -84,10 +94,12 @@
             border-radius: 6px;
             font-size: 16px;
         }
+
         .input:focus {
             outline: none;
             border-color: #3498db;
         }
+
         .search-btn {
             width: 100%;
             padding: 10px;
@@ -98,6 +110,7 @@
             font-size: 16px;
             cursor: pointer;
         }
+
         .search-btn:hover {
             background: #2980b9;
         }
@@ -108,12 +121,14 @@
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
         }
+
         .question-card {
             border: 1px solid #eee;
             border-radius: 6px;
             padding: 15px;
             background: white;
         }
+
         .subject-tag {
             display: inline-block;
             padding: 3px 10px;
@@ -123,20 +138,24 @@
             font-size: 14px;
             margin-bottom: 10px;
         }
+
         .question {
             font-size: 16px;
             margin-bottom: 10px;
             line-height: 1.6;
         }
+
         .answer {
             font-size: 15px;
             margin-bottom: 8px;
             color: #666;
         }
+
         .answer span {
             font-weight: bold;
             color: #27ae60;
         }
+
         .meta {
             font-size: 14px;
             color: #999;
@@ -148,6 +167,7 @@
             .question-list {
                 grid-template-columns: 1fr;
             }
+
             .filter {
                 flex-direction: column;
                 align-items: stretch;
@@ -155,6 +175,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- 简单导航 -->
@@ -173,11 +194,15 @@
                     <label>学科</label>
                     <select class="input" id="subject">
                         <option value="">全部</option>
+                        <option value="chinese">语文</option>
                         <option value="math">数学</option>
+                        <option value="english">英语</option>
                         <option value="physics">物理</option>
                         <option value="chemistry">化学</option>
-                        <option value="english">英语</option>
-                        <option value="chinese">语文</option>
+                        <option value="politics">政治</option>
+                        <option value="history">历史</option>
+                        <option value="biology">生物</option>
+                        <option value="geography">地理</option>
                     </select>
                 </div>
                 <div class="filter-item">
@@ -187,7 +212,7 @@
                         <option value="single">单选题</option>
                         <option value="multiple">多选题</option>
                         <option value="fill">填空题</option>
-                        <option value="essay">简答题</option>
+                        <option value="essay">解答题</option>
                     </select>
                 </div>
                 <div class="search-item">
@@ -237,4 +262,5 @@
     <!-- 基础交互（供后续补充JS） -->
     <script src="search.js"></script>
 </body>
+
 </html>

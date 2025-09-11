@@ -16,6 +16,5 @@ questionImg.addEventListener('change', (e) => {
 // 提交按钮逻辑（后续补充：收集表单数据并存储）
 const submitBtn = document.getElementById('submitBtn');
 submitBtn.addEventListener('click', () => {
-    // 此处可添加表单验证和数据提交逻辑
-    alert('提交按钮已点击，后续可补充数据存储JS！');
+    
 });
